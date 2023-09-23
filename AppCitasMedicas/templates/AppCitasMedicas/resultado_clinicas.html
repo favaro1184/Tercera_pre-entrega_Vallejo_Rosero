@@ -1,0 +1,29 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Resultado de la busqueda de Clinicas
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Las clinicas registradas son: </h3>
+        <table>
+            <tr>
+                <th>Id Clinica</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+            </tr>
+            {% for clinica in res %}
+            <tr>
+                <td>{{ clinica.id_clinica }} </td>
+                <td>{{ clinica.nombre }} </td>
+                <td>{{ clinica.direccion }} </td>
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+    <h3>No se obtuvieron resultados con el id_clinica enviado </h3>
+    {% endif %}
+{% endblock %}

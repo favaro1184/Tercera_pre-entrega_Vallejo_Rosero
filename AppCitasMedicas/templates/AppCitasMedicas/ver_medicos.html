@@ -1,0 +1,40 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1><center> Gestion de Medicos </center></h1>
+<div class="img-container" align="center">
+    <img class="img-fluid rounded-circle mb-3" src="{% static 'AppCitasMedicas/assets/img/medico.jpg' %}" alt="..." />
+</div>
+<p>
+    <h5>En esta pagina podras hacer toda la gestion sobre los medicos. Podras crear un nuevo medico haciendo click en el boton Crear Medico o podras hacer la
+    busqueda individual por medico haciendo click en el boton Buscar Medico<h5>
+</p>
+<a class="btn btn-primary" href="{% url 'CrearMedicos' %}">Crear Medico</a>
+<a class="btn btn-primary" href="{% url 'BuscarMedicos' %}">Buscar Medico</a>
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Los medicos registrados son: </h3>
+        <table>
+            <tr>
+                <th>Id Medico</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Profesion</th>
+            </tr>
+            {% for medico in res %}
+            <tr>
+                <td>{{ medico.id_medico }} </td>
+                <td>{{ medico.nombre }} </td>
+                <td>{{ medico.apellido }} </td>
+                <td>{{ medico.profesion }} </td> 
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+        <h3>No se obtuvieron resultados de medicos</h3>
+    {% endif %}
+{% endblock %}

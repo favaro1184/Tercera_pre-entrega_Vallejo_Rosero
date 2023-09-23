@@ -1,0 +1,16 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+Bienvenido al registro de pacientes
+{% endblock %}
+
+{% block formulario %}
+<form action="" method="POST"> {% csrf_token %}
+    <table>
+        {{ miFormulario.as_table}}
+    </table>
+    <input type = "submit" value="Guardar">
+ </form> 
+{% endblock %}

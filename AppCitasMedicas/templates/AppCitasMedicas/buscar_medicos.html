@@ -1,0 +1,16 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+Formulario de Busqueda de Medicos
+{% endblock %}
+
+{% block formulario %}
+<form action="/AppCitasMedicas/resultadoMedico/" method="GET">
+    <table>
+        <p> ID_Medico: <input type = "text" name="id_medico"> </p>
+        <input type = "submit" value="Buscar">
+    </table>
+ </form> 
+{% endblock %}

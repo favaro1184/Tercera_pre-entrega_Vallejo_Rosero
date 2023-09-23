@@ -1,0 +1,33 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Resultado de la busqueda de Citas
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Las citas registradas son: </h3>
+        <table>
+            <tr>
+                <th>Id Cita</th>
+                <th>Id Paciente</th>
+                <th>Id Medico</th>
+                <th>Id Clinica</th>
+                <th>Fecha Cita</th>
+            </tr>
+            {% for cita in res %}
+            <tr>
+                <td>{{ cita.id_cita }} </td>
+                <td>{{ cita.id_paciente }} </td>
+                <td>{{ cita.id_medico }} </td>
+                <td>{{ cita.id_clinica }} </td>
+                <td>{{ cita.fecha_de_cita }} </td>
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+    <h3>No se obtuvieron resultados con el id_cita enviado </h3>
+    {% endif %}
+{% endblock %}

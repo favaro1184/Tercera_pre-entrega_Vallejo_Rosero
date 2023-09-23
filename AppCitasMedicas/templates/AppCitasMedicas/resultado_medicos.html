@@ -1,0 +1,31 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Resultado de la busqueda de Pacientes
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Datos del medico consultado </h3>
+        <table>
+            <tr>
+                <th>Id Medico</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Profesion</th>
+            </tr>
+            {% for medico in res %}
+            <tr>
+                <td>{{ medico.id_medico }} </td>
+                <td>{{ medico.nombre }} </td>
+                <td>{{ medico.apellido }} </td>
+                <td>{{ medico.profesion }} </td> 
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+        <h3>No se obtuvieron resultados con el id_medico enviado </h3>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1><center> Gestion de Citas </center></h1>
+<div class="img-container" align="center">
+    <img class="img-fluid" src="{% static 'AppCitasMedicas/assets/img/cita.jpg' %}" alt="..." />
+</div>
+<p>
+    <h5>En esta pagina podras hacer toda la gestion sobre las citas. Podras crear una cita haciendo click en el boton Crear Cita o podras hacer la
+    busqueda individual por cita haciendo click en el boton Buscar Cita<h5>
+</p>
+<a class="btn btn-primary" href="{% url 'CrearCitas' %}">Crear Cita</a>
+<a class="btn btn-primary" href="{% url 'BuscarCitas' %}">Buscar Cita</a>
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Las citas registradas son: </h3>
+        <table>
+            <tr>
+                <th>Id Cita</th>
+                <th>Id Paciente</th>
+                <th>Id Medico</th>
+                <th>Id Clinica</th>
+                <th>Fecha Cita</th>
+            </tr>
+            {% for cita in res %}
+            <tr>
+                <td>{{ cita.id_cita }} </td>
+                <td>{{ cita.id_paciente }} </td>
+                <td>{{ cita.id_medico }} </td>
+                <td>{{ cita.id_clinica }} </td>
+                <td>{{ cita.fecha_de_cita }} </td>
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+        <h3>No se obtuvieron resultados de citas</h3>
+    {% endif %}
+{% endblock %}

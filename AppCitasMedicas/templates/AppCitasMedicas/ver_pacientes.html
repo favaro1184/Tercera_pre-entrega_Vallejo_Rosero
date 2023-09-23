@@ -1,0 +1,40 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1><center> Gestion de Pacientes </center></h1>
+<div class="img-container" align="center">
+    <img class="img-fluid rounded-circle mb-3" src="{% static 'AppCitasMedicas/assets/img/paciente.jpg' %}" alt="..." />
+</div>
+<p>
+    <h5>En esta pagina podras hacer toda la gestion sobre los pacientes. Podras crear un nuevo paciente haciendo click en el boton Crear Paciente o podras hacer la
+    busqueda individual por paciente haciendo click en el boton Buscar Paciente<h5>
+</p>
+<a class="btn btn-primary" href="{% url 'CrearPacientes' %}">Crear Paciente</a>
+<a class="btn btn-primary" href="{% url 'BuscarPacientes' %}">Buscar Paciente</a>
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Los pacientes registrados son: </h3>
+        <table border="1">
+            <tr>
+                <th>Id Paciente</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+            </tr>
+            {% for paciente in res %}
+            <tr>
+                <td>{{ paciente.id_paciente }} </td>
+                <td>{{ paciente.nombre }} </td>
+                <td>{{ paciente.apellido }} </td>
+                <td>{{ paciente.email }} </td> 
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+        <h3>No se obtuvieron resultados de pacientes</h3>
+    {% endif %}
+{% endblock %}

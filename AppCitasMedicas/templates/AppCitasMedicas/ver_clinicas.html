@@ -1,0 +1,38 @@
+{% extends "AppCitasMedicas/plantilla_base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1><center> Gestion de Clinicas </center></h1>
+<div class="img-container" align="center">
+    <img class="img-fluid rounded-circle mb-3" src="{% static 'AppCitasMedicas/assets/img/clinica.png' %}" alt="..." />
+</div>
+<p>
+    <h5>En esta pagina podras hacer toda la gestion sobre las clinicas. Podras crear una clinica haciendo click en el boton Crear Clinica o podras hacer la
+    busqueda individual por clinica haciendo click en el boton Buscar Clinica<h5>
+</p>
+<a class="btn btn-primary" href="{% url 'CrearClinicas' %}">Crear Clinica</a>
+<a class="btn btn-primary" href="{% url 'BuscarClinicas' %}">Buscar Clinica</a>
+{% endblock %}
+
+{% block formulario %}
+    {% if res %}
+        <h3>Las clinicas registradas son: </h3>
+        <table>
+            <tr>
+                <th>Id Clinica</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+            </tr>
+            {% for clinica in res %}
+            <tr>
+                <td>{{ clinica.id_clinica }} </td>
+                <td>{{ clinica.nombre }} </td>
+                <td>{{ clinica.direccion }} </td>
+            </tr>
+            {% endfor%}
+        </table>
+    {% else %}
+        <h3>No se obtuvieron resultados de clinicas</h3>
+    {% endif %}
+{% endblock %}
